@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Página de Login</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div id="page" class="flex">
+        <div class="form-wrapper">
+            <header>
+                <img src="./assets/logo.svg" alt="Logo" class="logo"/>
+            </header>
+            <main>
+                <div class="headline">
+                    <h1>Acesse a plataforma</h1>
+                    <p>Faça login ou registre-se para começar a construir seus projetos ainda hoje.</p>
+                </div>
+                <form>
+                    <div class="input-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="Digite seu e-mail" required />
+                    </div>
+
+                    <div class="input-group">
+                        <div class="label-flex">
+                            <label for="senha">Senha</label>
+                            <a href="#">Esqueceu a senha?</a>
+                        </div>
+                        <div class="password-wrapper">
+                            <input type="password" id="senha" placeholder="Digite sua senha" />
+                            <img src="./assets/eye-off.svg" alt="Mostrar senha" onclick="ShowPassword()" />
+                        </div>
+                    </div>
+
+                    <button type="submit">Entrar</button>
+
+                    <div class="create-account">
+                        <p>Ainda não tem uma conta? <a href="#">Inscreva-se</a></p>
+                    </div>
+                </form>
+            </main>
+        </div>
+        <div class="side-image"></div>
+    </div>
+</body>
+</html>
