@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+:root {
+    /* Produto */
+    --brancd-color: #EF5F4C;
+
+    /* Shape */
+    --background-color: #FFFFFF;
+    --surface-color: #F5F5F5;
+    --skeleton-color: #D9D9D9;
+    --shape-transparency: #FFFFFF;
+
+    /* Text */
+    --text-color-primary: #313131;
+    --text-color-secondary: #6C6C6C;
+
+    /* Tipografica */
+    --font-family: 'Poppins', sans-serif;
+    --h1: bold 32px/125% var(--font-family);
+    --paragraph-md: 14px/170% var(--font-family);
+    --paragraph-sm: 12px/170% var(--font-family);
+}
+
+.margin {
+    margin-inline: 32px;
+}
+
+
+body{
+    font: var(--text);
+    color: var (--text-color-primary);
+    background-color: var(--background-color);
+}
+
+a{
+    text-decoration: none;
+    color:inherit
+}
+
+a:hover{
+    color:var(--brand-coolor);
+    text-decoration: underline;
+}
+
+.container{
+    padding-inline: 32px;
+    max-width: 1280px;
+    margin-inline: auto;
+
+}
+
+.bg-surface-color{
+    background-color: var(--surface-color);
+}
+
+nav{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 0;
+    padding-block: 20px;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding-block: 8px;
+
+}
+
+nav ul li:last-child img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#profile{
+    display: flex;
+    gap: 32px;
+}
+
+#profile > div{
+    max-height: 384px;
+}
+
+#profile img{
+    width: 176px;
+    height: 176px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#profileh1{
+    font: var(--text-lg);
+    color: var(--text-color-primary);
+    margin-bottom: 8px;
+}
+
+#info{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 280px;
+}
+
+#info li{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+header{
+    padding-block: 32px;
+    font: var(--md-text);
+}
+
+header .container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-block: 24px;
+}
+
+main img{
+    width: 286px;
+    height: 286px;
+    object-fit: cover;
+}
+
+footer{
+    display: flex;
+    gap: 24px;
+    padding-block: 24px;
+    font:var(--text-md);
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer span:nth-last-child(1){
+    margin-left: 15px;
+}
+
+
