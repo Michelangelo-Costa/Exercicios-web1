@@ -1,4 +1,4 @@
-# 💻 Projetos - Desenvolvimento Web 1 (Estilo Windows)
+# 💻 Projetos - Desenvolvimento Web 1
 
 Este repositório contém um projeto desenvolvido para a disciplina de **Desenvolvimento Web 1**, com uma proposta visual inspirada no sistema operacional **Windows**.
 
