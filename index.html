@@ -1,284 +1,105 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-    <meta charset="UTF-8" />
-    <title>Atividades Práticas - Desenvolvimento Web 1 </title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body,
-        html {
-            height: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e1e2f 0%, #2b2b3d 100%);
-            color: white;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        a:visited {
-            color: inherit;
-        }
-
-        a:hover {
-            opacity: 0.9;
-        }
-
-        .taskbar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 50px;
-            background-color: rgba(40, 40, 40, 0.95);
-            display: flex;
-            align-items: center;
-            padding: 0 10px;
-            z-index: 10;
-            box-shadow: 0 -2px 6px #0007;
-        }
-
-        .taskbar-icon {
-            width: 32px;
-            height: 32px;
-            margin-right: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s;
-            cursor: pointer;
-        }
-
-        .taskbar-icon:hover {
-            transform: scale(1.1);
-        }
-
-        .taskbar-icon img {
-            width: 28px;
-            height: 28px;
-        }
-
-        .windows-window {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 420px;
-            min-height: 280px;
-            transform: translate(-50%, -50%);
-            background: #202020;
-            border-radius: 8px;
-            box-shadow: 0 0 16px rgba(0, 0, 0, 0.6);
-            border: 1px solid #3a3a3a;
-            overflow: hidden;
-        }
-
-        .windows-title-bar {
-            background: #0078d7;
-            padding: 10px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: white;
-        }
-
-        .windows-title {
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-
-        .windows-window-buttons span {
-            width: 16px;
-            height: 16px;
-            margin-left: 8px;
-            display: inline-block;
-            text-align: center;
-            border-radius: 2px;
-            background: rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-        }
-
-        .windows-window-buttons span:hover {
-            background: rgba(255, 255, 255, 0.4);
-        }
-
-        .windows-window-content {
-            padding: 20px;
-            color: #ddd;
-        }
-
-        .windows-project {
-            background: #2f2f2f;
-            border-radius: 5px;
-            padding: 10px 15px;
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .windows-project img {
-            width: 24px;
-            height: 24px;
-        }
-
-        .perfil {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            width: 80px;
-            height: 80px;
-            z-index: 20;
-        }
-
-        .perfil img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid #fff;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-        }
-
-        footer {
-            position: fixed;
-            bottom: 50px;
-            left: 0;
-            right: 0;
-            height: 30px;
-            background-color: #1a1a1a;
-            text-align: center;
-            line-height: 30px;
-            font-size: 14px;
-            color: #ccc;
-            border-top: 1px solid #333;
-            z-index: 9;
-        }
-
-        @media (max-width: 600px) {
-            .windows-window {
-                width: 90vw;
-            }
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades Práticas - Desenvolvimento Web 1</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
-    <div class="perfil">
-        <img src="Assets/fotos.jpg" alt="">
-    </div>
-    <div class="taskbar">
-        <div class="taskbar-icon" title="Iniciar">
-            <img src="Assets/Menuinical-removebg-preview.png" alt="">
-        </div>
-        <div class="taskbar-icon" title="Edge">
-            <img src="Assets/Microsoft-removebg-preview.png" alt="">
-        </div>
-        <div class="taskbar-icon" title="Explorador de Arquivos">
-            <img src="Assets/Explorador-removebg-preview.png" alt="">
-        </div>
-        <div class="taskbar-icon" title="Configurações">
-            <img src="Assets/Configuracao-removebg-preview.png" alt="">
+    <!-- Background Pattern -->
+    <div class="background-pattern"></div>
+    
+    <!-- Profile Picture -->
+    <div class="profile">
+        <div class="profile-ring">
+            <img src="Assets/fotos.jpg" alt="Michelangelo Costa" class="profile-image">
         </div>
     </div>
 
-
-    <div class="windows-window">
-        <div class="windows-title-bar">
-            <span class="windows-title">Projetos - Desenvolvimento Web 1</span>
-            <div class="windows-window-buttons">
-                <span title="Minimizar">─</span>
-                <span title="Maximizar">▢</span>
-                <span title="Fechar">✕</span>
+    <!-- Main Window -->
+    <div class="windows-window" id="mainWindow">
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <div class="title-left">
+                <div class="title-icon">
+                    <img src="Assets/Explorador-removebg-preview.png" alt="Pasta" class="title-icon-img">
+                </div>
+                <span class="title-text">Projetos - Desenvolvimento Web 1</span>
+            </div>
+            <div class="window-controls">
+                <button class="control-btn minimize-btn" title="Minimizar">
+                    <span>─</span>
+                </button>
+                <button class="control-btn maximize-btn" id="maximizeBtn" title="Maximizar">
+                    <span>▢</span>
+                </button>
+                <button class="control-btn close-btn" title="Fechar">
+                    <span>✕</span>
+                </button>
             </div>
         </div>
-        <div class="windows-window-content">
-            <h2>Meus Projetos</h2>
 
-            <a href="https://michelangelo-costa.github.io/Pagina-de-Login/" target="_blank">
-                <div class="windows-project">
-                    <img src="Assets/logo_Vertigo.svg" alt="">
-                    <span>Vertigo</span>
-                </div>
-            </a>
-
-            <a href="https://michelangelo-costa.github.io/unidade1/" target="_blank">
-                <div class="windows-project">
-                    <img src="Assets/logo_receitas.png" alt="">
-                    <span>Receitas</span>
-                </div>
-            </a>
-
-            <a href="https://michelangelo-costa.github.io/perfil-viagens/" target="_blank">
-                <div class="windows-project">
-                    <img src="Assets/logo_Perfil-viagens.svg" alt="">
-                    <span>Travelgram</span>
-                </div>
-            </a>
-
-            <a href="https://michelangelo-costa.github.io/formulario/" target="_blank">
-                <div class="windows-project">
-                    <img src="Assets/logo_Form.svg" alt="">
-                    <span>Estrelas do Amanhã</span>
-                </div>
-            </a>
-
-            <a href="https://michelangelo-costa.github.io/exercicio-news/" target="_blank">
-                <div class="windows-project">
-                    <img src="Assets/logo_Tech-News.svg" alt="">
-                    <span>Portal de Notícias</span>
-                </div>
-            </a>
-
-            <a href="https://michelangelo-costa.github.io/Portfolio-web/" target="_blank">
-                <div class="windows-project">
-                    <img src="Assets/logo_portfolio.svg" alt="">
-                    <span>Portfolio</span>
-                </div>
-            </a>
-
-            <a href="https://michelangelo-costa.github.io/conversor-moedas/" target="_blank">
-                <div class="windows-project">
-                    <img src="Assets/logo_moedas.png" alt="">
-                    <span>Conversor de Moedas</span>
-                </div>
-            </a>
-            <a href="https://michelangelo-costa.github.io/Projeto-Rembolso/" target="_blank">
-                <div class="windows-project">
-                    <img src="Assets/logo.Projeto_Rembolso.svg" alt="">
-                    <span>Projeto Rembolso</span>
-                </div>
-            </a>
-            <a href="https://michelangelo-costa.github.io/Lista-Compras/" target="_blank">
-                <div class="windows-project">
-                    <img src="Assets/logo_compras.png" alt="">
-                    <span>Projeto Lista de Compras</span>
-                </div>
-            </a>
-            <a href="https://michelangelo-costa.github.io/Corte-Cabelo/" target="_blank">
-                <div class="windows-project">
-                    <img src="Assets/logo_hair day.svg" alt="">
-                    <span>Projeto Corte de Cabelo</span>
-                </div>
-            </a>
+        <!-- Window Content -->
+        <div class="window-content">
+            <h2 class="content-title">
+                <span class="rocket-icon">🚀</span>
+                Meus Projetos
+            </h2>
+            
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be populated by JavaScript -->
+            </div>
         </div>
     </div>
+
+    <!-- Taskbar -->
+    <div class="taskbar">
+        <div class="taskbar-left">
+            <button class="taskbar-btn start-btn" title="Iniciar">
+                <img src="Assets/Menuinical-removebg-preview.png" alt="Menu" class="taskbar-icon-img">
+            </button>
+            <button class="taskbar-btn edge-btn" id="edgeBtn" title="Portfólio">
+                <img src="Assets/Microsoft-removebg-preview.png" alt="Portfólio" class="taskbar-icon-img">
+            </button>
+            <button class="taskbar-btn" title="Explorador de Arquivos">
+                <img src="Assets/Explorador-removebg-preview.png" alt="Explorador" class="taskbar-icon-img">
+            </button>
+            <button class="taskbar-btn" title="Configurações">
+                <img src="Assets/Configuracao-removebg-preview.png" alt="Configurações" class="taskbar-icon-img">
+            </button>
+        </div>
+        
+        <div class="taskbar-right">
+            <div class="clock" id="clock"></div>
+        </div>
     </div>
 
+    <!-- Footer Melhorado -->
+    <div class="footer">
+        <div class="footer-left">
+            <div class="footer-info">
+                <div class="footer-name">Michelangelo de Carvalho Costa</div>
+                <div class="footer-title">Desenvolvedor Web & Estudante</div>
+            </div>
+        </div>
+        
+        <div class="footer-right">
+            <div class="footer-social">
+                <a href="https://github.com/Michelangelo-Costa" target="_blank" class="social-link" title="GitHub">
+                    <img src="Assets/github_PNG80.png" alt="GitHub" class="social-icon">
+                </a>
+                <a href="https://www.linkedin.com/in/michelangelo-costa-35570b192/" target="_blank" class="social-link" title="LinkedIn">
+                    <img src="Assets/linkedIn_PNG8.png" alt="LinkedIn" class="social-icon">
+                </a>
+                <a href="mailto:michelangeloed@outlook.com" class="social-link" title="Email">
+                    <img src="Assets/logo-microsoft-outlook-1024.png" alt="Email" class="social-icon">
+                </a>
+            </div>
+            <div class="footer-year">© 2025</div>
+        </div>
+    </div>
 
-
-    <footer>
-        Michelangelo de Carvalho Costa
-    </footer>
-
+    <script src="script.js"></script>
 </body>
-
 </html>
