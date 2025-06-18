@@ -1,0 +1,528 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
+  color: white;
+  overflow: hidden;
+}
+
+/* Background Pattern */
+.background-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,<svg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'><g fill='none' fill-rule='evenodd'><g fill='%239C92AC' fill-opacity='0.05'><circle cx='30' cy='30' r='2'/></g></g></svg>");
+  pointer-events: none;
+}
+
+/* Profile */
+.profile {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 30;
+  cursor: pointer;
+}
+
+.profile-ring {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  padding: 4px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.profile-ring:hover {
+  transform: scale(1.05);
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Main Window */
+.windows-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 672px;
+  height: 70vh; /* Aumentei a altura para mostrar mais projetos */
+  background: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(24px);
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(75, 85, 99, 0.5);
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.windows-window.maximized {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: calc(100vh - 120px) !important; /* Ajustei para dar espaço ao footer maior */
+  max-width: none !important;
+  max-height: none !important;
+  transform: none !important;
+  border-radius: 0;
+}
+
+/* Title Bar */
+.title-bar {
+  background: linear-gradient(90deg, #2563eb, #8b5cf6);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.title-icon {
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.title-icon-img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.title-text {
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.control-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  font-size: 14px;
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.close-btn:hover {
+  background: #ef4444;
+}
+
+/* Window Content */
+.window-content {
+  padding: 24px;
+  height: calc(100% - 60px); /* Altura total menos a title bar */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.window-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.window-content::-webkit-scrollbar-track {
+  background: rgba(55, 65, 81, 0.3);
+  border-radius: 4px;
+}
+
+.window-content::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.5);
+  border-radius: 4px;
+}
+
+.window-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.7);
+}
+
+.content-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.rocket-icon {
+  margin-right: 12px;
+  font-size: 32px;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-item {
+  background: rgba(31, 41, 55, 0.5);
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(75, 85, 99, 0.3);
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+
+.project-item:hover {
+  background: rgba(55, 65, 81, 0.5);
+  transform: scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+  border-color: rgba(107, 114, 128, 0.5);
+}
+
+.project-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* LOGOS MAIORES - Aumentei o tamanho e removi o padding */
+.project-icon {
+  width: 64px; /* Aumentado de 48px para 64px */
+  height: 64px; /* Aumentado de 48px para 64px */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  padding: 2px; /* Reduzido de 8px para 2px */
+  background: transparent;
+}
+
+.project-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-width: 60px; /* Garante que a imagem não fique distorcida */
+  max-height: 60px; /* Garante que a imagem não fique distorcida */
+}
+
+.project-item:hover .project-icon {
+  transform: scale(1.1);
+}
+
+.project-info {
+  flex: 1;
+}
+
+.project-name {
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.project-item:hover .project-name {
+  color: #93c5fd;
+}
+
+.project-description {
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.project-arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 16px;
+  color: #60a5fa;
+}
+
+.project-item:hover .project-arrow {
+  opacity: 1;
+}
+
+/* Taskbar */
+.taskbar {
+  position: fixed;
+  bottom: 56px; /* Ajustei para dar espaço ao footer maior */
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(17, 24, 39, 0.9);
+  backdrop-filter: blur(24px);
+  border-top: 1px solid rgba(75, 85, 99, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 20;
+}
+
+.taskbar-left {
+  display: flex;
+  gap: 12px;
+}
+
+.taskbar-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: rgba(55, 65, 81, 1);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  padding: 8px;
+}
+
+.taskbar-btn:hover {
+  background: rgba(75, 85, 99, 1);
+  transform: translateY(-2px);
+}
+
+.start-btn {
+  background: #2563eb;
+}
+
+.start-btn:hover {
+  background: #3b82f6;
+}
+
+.edge-btn {
+  background: #0078d4;
+}
+
+.edge-btn:hover {
+  background: #106ebe;
+}
+
+.taskbar-icon-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.clock {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Courier New", monospace;
+}
+
+/* Footer Melhorado */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 56px; /* Aumentei a altura */
+  background: linear-gradient(90deg, rgba(17, 24, 39, 0.95), rgba(31, 41, 55, 0.95));
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  border-top: 1px solid rgba(75, 85, 99, 0.3);
+  z-index: 10;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.footer-name {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.footer-title {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 8px;
+}
+
+/* Ícones sociais reais - CORRIGIDO */
+.social-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  /* Removido: filter: brightness(0) invert(1); */
+  transition: transform 0.3s ease;
+}
+
+.social-link:hover .social-icon {
+  /* Removido: filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(200deg); */
+  transform: scale(1.1);
+}
+
+/* Ajustar o fundo dos links sociais para combinar melhor */
+.social-link {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1); /* Fundo mais sutil */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #60a5fa;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  padding: 4px;
+}
+
+.social-link:hover {
+  background: rgba(255, 255, 255, 0.2); /* Fundo mais claro no hover */
+  transform: translateY(-2px);
+}
+
+.footer-year {
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .windows-window {
+    width: 95vw;
+    height: 75vh; /* Aumentei para mobile também */
+  }
+
+  .windows-window.maximized {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: calc(100vh - 120px) !important;
+    transform: none !important;
+  }
+
+  .window-content {
+    padding: 16px;
+  }
+
+  .content-title {
+    font-size: 24px;
+  }
+
+  .profile {
+    top: 16px;
+    right: 16px;
+  }
+
+  .profile-ring {
+    width: 60px;
+    height: 60px;
+  }
+
+  .footer {
+    padding: 0 16px;
+  }
+
+  .footer-info {
+    display: none;
+  }
+
+  .footer-left {
+    gap: 8px;
+  }
+
+  .footer-social {
+    gap: 6px;
+  }
+
+  .social-link {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .social-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Profile hidden state */
+.profile.hidden {
+  opacity: 0;
+  transform: scale(0.8) translateY(-20px);
+  pointer-events: none;
+}
+
+/* Window hidden state */
+.windows-window.hidden {
+  display: none !important;
+}
+
+/* Taskbar button active state */
+.taskbar-btn.active {
+  background: #3b82f6 !important;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
