@@ -1,4 +1,3 @@
-// Projects data with real image paths - TODOS OS PROJETOS
 const projects = [
   {
     name: "Vertigo",
@@ -63,11 +62,9 @@ const projects = [
   },
 ]
 
-// Global variables
 let isMaximized = false
 let isWindowVisible = true
 
-// Initialize the application
 document.addEventListener("DOMContentLoaded", () => {
   initializeProjects()
   initializeClock()
@@ -77,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeEdgeButton()
 })
 
-// Populate projects with real images
 function initializeProjects() {
   const projectsGrid = document.getElementById("projectsGrid")
 
@@ -105,7 +101,6 @@ function initializeProjects() {
   })
 }
 
-// Initialize clock
 function initializeClock() {
   const clockElement = document.getElementById("clock")
 
@@ -123,7 +118,6 @@ function initializeClock() {
   setInterval(updateClock, 1000)
 }
 
-// Initialize window controls
 function initializeWindowControls() {
   const maximizeBtn = document.getElementById("maximizeBtn")
   const mainWindow = document.getElementById("mainWindow")
@@ -133,23 +127,19 @@ function initializeWindowControls() {
     isMaximized = !isMaximized
 
     if (isMaximized) {
-      // Maximizar - CORRIGIDO
       mainWindow.classList.add("maximized")
       maximizeBtn.innerHTML = "<span>🗗</span>"
       maximizeBtn.title = "Restaurar"
 
-      // Esconder foto de perfil temporariamente
       profile.classList.add("hidden")
       setTimeout(() => {
         profile.classList.remove("hidden")
       }, 800)
     } else {
-      // Restaurar - CORRIGIDO PARA VOLTAR AO CENTRO
       mainWindow.classList.remove("maximized")
       maximizeBtn.innerHTML = "<span>▢</span>"
       maximizeBtn.title = "Maximizar"
 
-      // Forçar reset das propriedades de posicionamento
       setTimeout(() => {
         mainWindow.style.top = "50%"
         mainWindow.style.left = "50%"
@@ -160,7 +150,6 @@ function initializeWindowControls() {
     }
   })
 
-  // Minimizar com animação melhorada
   document.querySelector(".minimize-btn").addEventListener("click", () => {
     mainWindow.style.transition = "all 0.3s ease"
 
@@ -182,13 +171,11 @@ function initializeWindowControls() {
     }, 1000)
   })
 
-  // Fechar - MODIFICADO PARA APENAS ESCONDER
   document.querySelector(".close-btn").addEventListener("click", () => {
     hideWindow()
   })
 }
 
-// Initialize taskbar controls
 function initializeTaskbarControls() {
   const folderBtn = document.querySelector('.taskbar-btn[title="Explorador de Arquivos"]')
 
@@ -196,11 +183,9 @@ function initializeTaskbarControls() {
     toggleWindow()
   })
 
-  // Add some taskbar interactivity for other buttons
   document.querySelectorAll(".taskbar-btn").forEach((btn) => {
     if (btn.title !== "Explorador de Arquivos" && btn.id !== "edgeBtn") {
       btn.addEventListener("click", function () {
-        // Add click animation
         this.style.transform = "translateY(-2px) scale(0.95)"
         setTimeout(() => {
           this.style.transform = "translateY(-2px)"
@@ -210,15 +195,12 @@ function initializeTaskbarControls() {
   })
 }
 
-// Initialize Edge button - CORRIGIDO PARA SEU PORTFÓLIO
 function initializeEdgeButton() {
   const edgeBtn = document.getElementById("edgeBtn")
 
   edgeBtn.addEventListener("click", () => {
-    // Abre seu portfólio em nova aba
     window.open("https://michelangelo-costa.github.io/portfolio/", "_blank")
 
-    // Animação de clique
     edgeBtn.style.transform = "translateY(-2px) scale(0.95)"
     setTimeout(() => {
       edgeBtn.style.transform = "translateY(-2px)"
@@ -226,7 +208,6 @@ function initializeEdgeButton() {
   })
 }
 
-// Initialize profile click to GitHub
 function initializeProfileClick() {
   const profile = document.querySelector(".profile")
 
@@ -234,7 +215,6 @@ function initializeProfileClick() {
     window.open("https://github.com/Michelangelo-Costa", "_blank")
   })
 
-  // Add hover effect
   profile.addEventListener("mouseenter", () => {
     profile.style.transform = "scale(1.05)"
   })
@@ -244,7 +224,6 @@ function initializeProfileClick() {
   })
 }
 
-// Show/Hide window functions
 function showWindow() {
   const mainWindow = document.getElementById("mainWindow")
   const folderBtn = document.querySelector('.taskbar-btn[title="Explorador de Arquivos"]')
@@ -253,7 +232,6 @@ function showWindow() {
   folderBtn.classList.add("active")
   isWindowVisible = true
 
-  // Animação de entrada
   mainWindow.style.opacity = "0"
 
   if (isMaximized) {
@@ -291,14 +269,12 @@ function hideWindow() {
     folderBtn.classList.remove("active")
     isWindowVisible = false
 
-    // Reset maximize state when hidden
     if (isMaximized) {
       isMaximized = false
       mainWindow.classList.remove("maximized")
       document.getElementById("maximizeBtn").innerHTML = "<span>▢</span>"
       document.getElementById("maximizeBtn").title = "Maximizar"
 
-      // Reset positioning
       mainWindow.style.top = "50%"
       mainWindow.style.left = "50%"
       mainWindow.style.transform = "translate(-50%, -50%)"
